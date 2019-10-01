@@ -18,14 +18,14 @@ Restaurar backup escolhido: Recebe chave primária de arquivo (id) do usuário e
 
 ## Requisições
 ### POST backup/
-arquivoJson:  {...}    Arquivo contém o que o usuário gostaria de armazenar.
+arquivoJson:  {...}    Arquivo contém o que o usuário gostaria de armazenar.\
 retorno { id: x, data: y, tamanhoArquivo: z, feedback: {codigo: x, mensagem: “y”}}
  
 ### GET restaura/{id}
 retorno { arquivoJson: { … }, feedback: {codigo: x, mensagem: “y”}}
  
 ### UPDATE atualiza/
-{ id: x, arquivoJson: {...} }      Usuário passa qual id gostaria de atualizar e com qual arquivo.
+{ id: x, arquivoJson: {...} }      Usuário passa qual id gostaria de atualizar e com qual arquivo.\
 retorno { id: x, data: y, tamanhoArquivo: z, feedback }
  
 ### DELETE apaga/{id}
