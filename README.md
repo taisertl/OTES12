@@ -1,5 +1,5 @@
 # BACKUP
-Repositório da disciplina 'Tópicos Avançados de Engenharia de Software'
+Projeto da disciplina 'Tópicos Avançados de Engenharia de Software'
 
 ## Objetivo
 Realizar cópias de segurança de informações recebidas através de um arquivo Json. Além disso possibilitar atualizar, restaurar e remover este backup. Assim como, listar a lista de todos os backups realizados. 
