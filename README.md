@@ -8,7 +8,7 @@ Serviço Rest que se conecta através de um banco de dados e fornece operações
 
 ## Funcionalidades
 
-Entrada: arquivo Json\
+Entrada: arquivo Json
 ### Realizar backup
 Recebe um arquivo Json com as informações que o usuário quer guardar e armazena o id do backup, a data do backup, o tamanho do arquivo e o arquivo em si. 
 
