@@ -3,14 +3,14 @@ Projeto da disciplina de Tópicos Avançados de Engenharia de Software
 
 ## Objetivo
 
-Serviço Rest que conecta-se através de um banco de dados e fornece operações Post, Get, Delete e Put para um serviço de backup no qual realiza cópias de segurança de informações recebidas através de um arquivo Json. Além disso possibilitar atualizar, restaurar e remover este backup. Assim como, listar a lista de todos os backups realizados. 
+Serviço Rest que se conecta através de um banco de dados e fornece operações Post, Get, Delete e Put para um serviço de backup no qual realiza cópias de segurança de informações recebidas através de um arquivo Json. Além disso possibilitar atualizar, restaurar e remover este backup. Assim como, listar a lista de todos os backups realizados. 
 
 
 ## Funcionalidades
 
 Entrada: arquivo Json\
 ### Realizar backup
-Recebe um arquivo json com as informações que o usuário quer guardar e armazena o id do backup, a data do backup, o tamanho do arquivo e o arquivo em si. 
+Recebe um arquivo Json com as informações que o usuário quer guardar e armazena o id do backup, a data do backup, o tamanho do arquivo e o arquivo em si. 
 
 #### POST backup/
 arquivoJson:  {...}\
