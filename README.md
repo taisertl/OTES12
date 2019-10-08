@@ -1,35 +1,44 @@
 # BACKUP
-Projeto da disciplina 'Tópicos Avançados de Engenharia de Software'
+Projeto da disciplina de Tópicos Avançados de Engenharia de Software
 
 ## Objetivo
-Realizar cópias de segurança de informações recebidas através de um arquivo Json. Além disso possibilitar atualizar, restaurar e remover este backup. Assim como, listar a lista de todos os backups realizados. 
+
+Serviço Rest que conecta-se através de um banco de dados e fornece operações Post, Get, Delete e Put para um serviço de backup no qual realiza cópias de segurança de informações recebidas através de um arquivo Json. Além disso possibilitar atualizar, restaurar e remover este backup. Assim como, listar a lista de todos os backups realizados. 
+
 
 ## Funcionalidades
-### Entrada: arquivo Json
-Salvar backup: Recebe um arquivo json com as informações que o usuário quer guardar e armazena o id do backup, a data do backup, o tamanho do arquivo e o arquivo em si. 
 
-Lista backups realizados: lista todos os backups correspondentes realizados.
+Entrada: arquivo Json\
+### Realizar backup
+Recebe um arquivo json com as informações que o usuário quer guardar e armazena o id do backup, a data do backup, o tamanho do arquivo e o arquivo em si. 
 
-Remover backup: Recebe chave primária do arquivo de backup (id) e exclui o registro do backup correspondente. 
-
-### Saída: arquivo Json recuperado
-Restaurar backup escolhido: Recebe chave primária de arquivo (id) do usuário e retorna o arquivo Json escolhido na listagem.
-
-
-## Requisições
 ### POST backup/
-arquivoJson:  {...}    Arquivo contém o que o usuário gostaria de armazenar.\
+arquivoJson:  {...}\
 retorno { id: x, data: y, tamanhoArquivo: z, feedback: {codigo: x, mensagem: “y”}}
- 
-### GET restaura/{id:int}
-retorno { arquivoJson: { … }, feedback: {codigo: x, mensagem: “y”}}
- 
-### UPDATE atualiza/
-{ id: x, arquivoJson: {...} }      Usuário passa qual id gostaria de atualizar e com qual arquivo.\
+
+### Atualiza backup
+Recebe chave primária do arquivo de backup (id) já existente e um arquivo Json. Substitui o arquivo com o id que o usuário passou pelo arquivo novo.
+
+### PUT atualiza/
+{ id: x, arquivoJson: {...} }\
 retorno { id: x, data: y, tamanhoArquivo: z, feedback }
- 
-### DELETE apaga/{id:int}
-retorno { id:x, feedback }
- 
+
+### Lista backups realizados
+lista todos os backups correspondentes realizados.
+
 ### GET lista/{}
 retorno { backups [ { id: x, data: y, tamanhoArquivo: z, arquivoJson: { … } }, ... ] }
+
+### Remover backup
+Recebe chave primária do arquivo de backup (id) e exclui o registro do backup correspondente. 
+
+### DELETE apaga/{id:int}
+retorno { id:x, feedback }
+
+Saída: arquivo Json recuperado\
+### Restaurar backup escolhido
+Recebe chave primária de arquivo (id) do usuário e retorna o arquivo Json escolhido na listagem.
+
+### GET restaura/{id:int}
+retorno { arquivoJson: { … }, feedback: {codigo: x, mensagem: “y”}}
+
