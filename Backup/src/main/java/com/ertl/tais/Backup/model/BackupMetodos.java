@@ -14,7 +14,10 @@ public class BackupMetodos {
     }
 
     public void getListaBkp() {
-        System.out.println("teste");
+        System.out.println("getting lista backup...");
+        String query = "SELECT * FROM backups;";
+
+        executeUpdate(query);
     }
 
     public void addBkp(com.ertl.tais.model.Backup bkp) {
@@ -28,15 +31,20 @@ public class BackupMetodos {
     }
 
     public void getBkp(UUID id) {
-        System.out.println("teste");
-        //talvez executequery
+        System.out.println("getting backup...");
+        String query = "SELECT objJson FROM backups WHERE id =" + id + ";";
+
+        executeUpdate(query);
     }
 
     public void delBkp(UUID id) {
-        System.out.println("teste");
+        System.out.println("deleting backup...");
+        String query = "DELETE FROM backups WHERE id =" + id + ";";
+
+        executeUpdate(query);
     }
 
-    public void updateBkp(UUID id) {
+    public void updateBkp(UUID id, String objJson) {
         System.out.println("teste");
     }
 
