@@ -1,0 +1,13 @@
+version: "3.1"
+
+services:
+  db:
+    container_name: mongoDB
+    image: mongo:latest
+    restart: always
+    volumes:
+      - ./bkpData
+    environment:
+      - MONGO_INITDB_DATABASE= Backup
+    ports:
+      - 27017:27017
