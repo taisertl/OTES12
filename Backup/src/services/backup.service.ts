@@ -129,7 +129,6 @@ export class BackupService {
   }
 
   public undoDelBackup(req: Request, res: Response){
-    console.log('entrou');
     const backupID = req.params.id;
     const mementoController = MementoController.getInstance();
     const mementoList = mementoController.getMementos();

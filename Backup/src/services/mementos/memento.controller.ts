@@ -47,6 +47,7 @@ export class MementoController {
         });
     }
 
+    //padrão Singleton
     static getInstance(): MementoController {
         if (!MementoController.instance) {
             MementoController.instance = new MementoController();
