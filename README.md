@@ -17,6 +17,11 @@ Recebe um arquivo Json com as informações que o usuário quer guardar e armaze
   "arquivo": {...}
 }
 
+####exemplo
+{
+  "arquivo": {"aula": "tópicos eng soft", "dia": "terça"}
+}
+
 retorno { id: x, data: y, tamanhoArquivo: z, arquivo: {...}}
 OBS: guarde o id do Backup, pois será necessário para restaurar, atualizar e excluir
 
