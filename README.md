@@ -8,37 +8,57 @@ Serviço Rest que se conecta através de um banco de dados e fornece operações
 
 ## Funcionalidades
 
-Entrada: arquivo Json
 ### Realizar backup
 Recebe um arquivo Json com as informações que o usuário quer guardar e armazena o id do backup, a data do backup, o tamanho do arquivo e o arquivo em si. 
 
 ### POST backup/
-arquivoJson:  {...}\
-retorno { id: x, data: y, tamanhoArquivo: z, feedback: {codigo: x, mensagem: “y”}}
+#### body
+{
+  "arquivo": {...}
+}
+
+retorno { id: x, data: y, tamanhoArquivo: z, arquivo: {...}}
+OBS: guarde o id do Backup, pois será necessário para restaurar, atualizar e excluir
 
 ### Atualiza backup
 Recebe chave primária do arquivo de backup (id) já existente e um arquivo Json. Substitui o arquivo com o id que o usuário passou pelo arquivo novo.
 
-### PUT atualiza/
-{ id: x, arquivoJson: {...} }\
-retorno { id: x, data: y, tamanhoArquivo: z, feedback }
+### PUT /backup/"id"
+#### body
+{
+  "arquivo": {...}
+}
 
-### Lista backups realizados
-lista todos os backups correspondentes realizados.
+retorno {feedback}
 
-### GET lista/{}
-retorno { backups [ { id: x, data: y, tamanhoArquivo: z, arquivoJson: { … } }, ... ] }
+### Desfazer atualização backup
+Recebe chave primária de um backup (id) que foi atualizado e restaura as informações antigas.
+
+### PUT /backup/desfazer/put/"id"
+retorno {feedback}
 
 ### Remover backup
 Recebe chave primária do arquivo de backup (id) e exclui o registro do backup correspondente. 
 
-### DELETE apaga/{id:int}
-retorno { id:x, feedback }
+### DELETE /backup/"id"
+retorno {feedback}
 
-Saída: arquivo Json recuperado\
-### Restaurar backup escolhido
-Recebe chave primária de arquivo (id) do usuário e retorna o arquivo Json escolhido na listagem.
+### Desfazer exclusão do backup
+Recebe chave primária de um backup (id) que foi excluído e restaura o backup.
 
-### GET restaura/{id:int}
-retorno { arquivoJson: { … }, feedback: {codigo: x, mensagem: “y”}}
+### POST /backup/desfazer/delete/"id"
+retorno { id: x, data: y, tamanhoArquivo: z, arquivo: {...}}
+
+### Restaurar backup específico
+Recebe chave primária de arquivo (id) do usuário e retorna o arquivo escolhido.
+
+### GET /backup/"id"
+retorno { id: x, data: y, tamanhoArquivo: z, arquivo: {...}}
+
+### Lista backups realizados
+lista todos os backups correspondentes realizados.
+
+### GET backups/
+retorno { backups [ { id: x, data: y, tamanhoArquivo: z, arquivoJson: { … } }, ... ] }
+
 
