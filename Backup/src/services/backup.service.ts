@@ -129,12 +129,11 @@ export class BackupService {
   }
 
   public undoDelBackup(req: Request, res: Response){
+    console.log('entrou');
     const backupID = req.params.id;
     const mementoController = MementoController.getInstance();
     const mementoList = mementoController.getMementos();
     let mementoIndex: number;
-
-    //const mementoIndex = mementoList.findIndex(mmt => mmt.status.toObject()['_id'].toString() === backupID.toString());
 
     mementoIndex = -1;
     for (var i = mementoList.length - 1; i >= 0; i--) {
@@ -147,7 +146,12 @@ export class BackupService {
 
     const mementoBkp = mementoList[mementoIndex];
 
-    const newBackup = new Backup(mementoBkp.status);
+    req.body['_id'] = mementoBkp.getStatus().toObject()['_id'];
+    req.body['arquivo'] = mementoBkp.getStatus().toObject()['arquivo'];
+    req.body['data'] = mementoBkp.getStatus().toObject()['data'];
+    req.body['tamanhoArquivo'] = mementoBkp.status.toObject()['tamanhoArquivo'];
+
+    const newBackup = new Backup(req.body);
     newBackup.save((error: Error, backup: MongooseDocument) => {
       if (error){
         res.send(error);
