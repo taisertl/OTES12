@@ -154,7 +154,7 @@
             <div class="col-lg-7">
                 <div class="form-box" align="center">
                     <h4>DESFAZER ÚLTIMA ATUALIZAÇÃO</h4>
-                    <p>Selecione o botão abaixo para restaurar o último backup atualizado</p>
+                    <p>Insira o ID do último backup atualizado para restaurar</p>
                     <hr />
                     <form action="desfazeratualizarbkp.php" method="post">
                         <table class="table table-light table-borderless">
@@ -210,7 +210,7 @@
             <div class="col-lg-7">
                 <div class="form-box" align="center">
                     <h4>DESFAZER ÚLTIMA EXCLUSÃO</h4>
-                    <p>Selecione o botão abaixo para restaurar o último backup excluído</p>
+                    <p>Selecione o ID o último backup excluído para restaurar</p>
                     <hr />
                     <form action="desfazerdeletabkp.php" method="post">
                         <table class="table table-light table-borderless">
@@ -278,7 +278,8 @@
                             $lista = json_decode($lista, true);
 
                             $numeros = array();
-
+                            
+                            //tamanho de cada bkp
                             foreach ($lista as &$value) {
                                 array_push($numeros, $value['tamanhoArquivo']);
                             }
